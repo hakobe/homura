@@ -1,0 +1,17 @@
+{
+    "name" : "homura",
+    "main" : "lib/homura",
+    "version" : "0.0.1",
+    "description": "homura is a IRC bouncer written in JavaScript.",
+    "keywords" : [ "irc "],
+    "license" : "MIT",
+    "author" : { 
+        "name" : "Yohei Fushii",
+        "email" : "hakobe@gmail.com",
+        "url" : "http://www.douzemille.net/"
+    },
+    "dependencies" : {
+        "iconv" : "~2.0.6"
+    }
+}
+
