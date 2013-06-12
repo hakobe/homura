@@ -1,0 +1,32 @@
+{
+    "host" : "localhost",
+    "port" : 6667,
+    "password" : "YOURPASSWORD",
+    "tls" : {
+        "key_file"  : "/absolute/path/to/your/privatekey.pem",
+        "cert_file" : "/absolute/path/to/your/cetificate.pem"
+    },
+    "networks" : [
+        {
+            "name"     : "freenode",
+            "encoding" : "UTF-8",
+            "server"   : "hubbard.freenode.net",
+            "port"     : 7000,
+            "nick"     : "YOURNICK",
+            "user"     : "YOURUSER",
+            "real"     : "YOURNAME",
+            "tls"      : {
+              "ca_file"  : "/absolute/path/to/your/ca.pem"
+            }
+        },
+        {
+            "name"     : "ircnet",
+            "encoding" : "ISO-2022-JP",
+            "server"   : "irc.media.kyoto-u.ac.jp",
+            "port"     : 6667,
+            "nick"     : "YOURNICK",
+            "user"     : "YOURUSER",
+            "real"     : "YOURNAME"
+        }
+    ]
+}
