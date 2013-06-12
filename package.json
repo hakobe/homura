@@ -11,7 +11,8 @@
         "url" : "http://www.douzemille.net/"
     },
     "dependencies" : {
-        "iconv" : "~2.0.6"
+        "iconv" : "~2.0.6",
+        "nopt"  : "~2.1.1"
     }
 }
 
