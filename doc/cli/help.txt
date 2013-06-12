@@ -1,0 +1,17 @@
+
+Usage: homura [options]
+
+Description:
+
+  homura is a IRC Bouncer.
+
+Options:
+
+  --conifg <jsonpath>  spcecify <jsonpath> as config
+                       default is "config.json" of current dir
+
+  -v, --verbose        output logs verbosely
+
+  --version            show version info
+  --debug              output debug logs
+
