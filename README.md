@@ -1,6 +1,6 @@
 # homura
 
-This is IRC bouncer written in JavaScript for Node.js. 
+This is the IRC bouncer written in JavaScript for Node.js. 
 
 The name "homura" is from [madoka](http://www.madoka.org/) which is the IRC bouncer I used first ;)
 
