@@ -1,5 +1,5 @@
 #!/usr/bin/env node
 'use strict';
 
-var homura = require('../lib/homura');
-homura.Cli.run( process.argv );
+var Cli = require('../lib/cli');
+Cli.run( process.argv );
