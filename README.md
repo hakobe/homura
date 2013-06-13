@@ -130,6 +130,7 @@ $ homura --debug
 ### AutoJoin
 
 ## Todos
+- Tests :-(
 - CTCP message handling
 - AWAY message handling
 - More plugins
