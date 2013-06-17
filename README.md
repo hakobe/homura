@@ -135,14 +135,16 @@ $ homura --debug
 
 ## Plugins
 
-### FileLog
+Plugins are placed under `plugins` directory. You can enable plugins and can pass options to plugins in `config.json`. Please see Configuration section.
+
+### file-log 
 Write log to files.
 
 #### Options
 - dir : Directory to save logfiles in
 - format : Format of the log filename (e.g. `{network}-{channel}-{year}{month}{date}.log` )
 
-### AutoReply
+### auto-reply
 Replies a message automatically while you are not connected to homur.
 
 #### Options
@@ -152,8 +154,8 @@ Replies a message automatically while you are not connected to homur.
 - Tests :-(
 - CTCP messages handling
 - AWAY messages handling
-- More plugins
 - NickServe Support
+- More plugins and plugin hacking documents
 
 ## Author
 - @hakobe
