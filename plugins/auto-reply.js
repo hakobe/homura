@@ -1,9 +1,8 @@
 'use strict';
 
-var AutoReply = Object.create({
+var AutoReply = {
     init : function( options ) {
         this.name = options.name;
-        this.options = options;
     },
     handleNetwork : function( bouncer, network ) {
         network.on('privmsg', (function( message ) {
@@ -24,6 +23,6 @@ var AutoReply = Object.create({
     handleSession : function( bouncer, session ) {
         // nop
     },
-});
+};
 
 module.exports = AutoReply;
