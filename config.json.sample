@@ -28,5 +28,14 @@
             "user"     : "YOURUSER",
             "real"     : "YOURNAME"
         }
+    ],
+    "plugins" : [
+        {
+            "name" : "file-log",
+            "dir"  : "/path/to/logs"
+        },
+        {
+            "name" : "auto-reply"
+        }
     ]
 }
