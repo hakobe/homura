@@ -17,7 +17,7 @@ var AutoReply = {
             var command = this.options.notice ? 'NOTICE' : 'PRIVMSG';
             network.send(
                 'NOTICE',
-                [ message.nick, ( this..message || "Sorry, I am away from IRC.") ]
+                [ message.nick, ( this.message || "Sorry, I am away from IRC.") ]
             );
         }).bind(this));
     },
