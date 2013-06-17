@@ -3,6 +3,7 @@
 var AutoReply = {
     init : function( options ) {
         this.name = options.name;
+        this.message = options.message;
     },
     handleNetwork : function( bouncer, network ) {
         network.on('privmsg', (function( message ) {
@@ -16,12 +17,9 @@ var AutoReply = {
             var command = this.options.notice ? 'NOTICE' : 'PRIVMSG';
             network.send(
                 'NOTICE',
-                [ message.nick, ( this.options.message || "Sorry, I am away from IRC.") ]
+                [ message.nick, ( this..message || "Sorry, I am away from IRC.") ]
             );
         }).bind(this));
-    },
-    handleSession : function( bouncer, session ) {
-        // nop
     },
 };
 

@@ -11,7 +11,7 @@ var FileLog = {
         if (this.dir[0] !== '/') {
             this.dir = path.resolve( process.cwd(), this.dir );
         }
-        this.format  = options.format || '{network}_{channel}_{year}{month}{date}.log';
+        this.format  = options.format || '{network}-{channel}-{year}{month}{date}.log';
     },
     handleNetwork : function( bouncer, network ) {
         network.on( 'connect', (function() {

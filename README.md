@@ -2,19 +2,17 @@
 
 This is the IRC bouncer written in JavaScript for Node.js. The name "homura" is from [madoka](http://www.madoka.org/) which is the IRC bouncer I used first ;)
 
-This project is under *DEVELOPMENT*. APIs are unstable and some important features may not be implemented.
+This project is under *DEVELOPMENT*. APIs are unstable and some important features have not been implemented yet.
 
 ## Synopsis
 
 ```
-$ mkdir hom
-$ cd hom
 $ npm install -g homura
 $ vim config.json // see Configuration section
 $ homura -v
 ```
 
-To use homura, please connect to `host:port` configured in `config.json` from your IRC client.
+To connect to homura with your IRC client, use the host and the port configured in `config.json`.
 You should set the IRC user name like `USERNAME@NETWORKNAME`. (e.g. `akemi@freenode` or `akemi@ircnet` )
 
 `USERNAME` is an actual user name for IRC networks, 
@@ -29,7 +27,7 @@ $ npm install -g homura
 
 ## Configuration
 
-Homura uses a JSON format configuration file.
+homura uses a JSON format configuration file.
 
 The default path of the configuration file is `config.json` of current directry 
 that homur is running on, and you can also specify `config.json` by using 
@@ -100,6 +98,15 @@ $ homura --config /path/to/your_config.json
             "user"     : "YOURUSER",
             "real"     : "YOURNAME",
         }
+    ],
+    "plugins" : [
+        {
+            "name" : "file-log",
+            "dir"  : "/path/to/logs"
+        },
+        {
+            "name" : "auto-reply"
+        }
     ]
 }
 ```
@@ -107,32 +114,44 @@ $ homura --config /path/to/your_config.json
 ## Run
 
 Start the homura with `config.json` in current directory.
+
 ```
 $ homura
 ```
 
 or specify `config.json` by `--config` option.
+
 ```
 $ homura --config /path/to/your_config.json
 ```
 
 Please specify `-v` or `--verbose` options to see what the homura is doing.
 `--debug` may be too noisy (prints the same IRC messages 4 times...) .
+
 ```
 $ homura -v
 $ homura --debug
 ```
 
-## Modules
+## Plugins
 
-### Log
+### FileLog
+Write log to files.
 
-### AutoJoin
+#### Options
+- dir : Directory to save logfiles in
+- format : Format of the log filename (e.g. `{network}-{channel}-{year}{month}{date}.log` )
+
+### AutoReply
+Replies a message automatically while you are not connected to homur.
+
+#### Options
+- message : Message to use for reply
 
 ## Todos
 - Tests :-(
-- CTCP message handling
-- AWAY message handling
+- CTCP messages handling
+- AWAY messages handling
 - More plugins
 - NickServe Support
 
