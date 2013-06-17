@@ -109,14 +109,14 @@ var FileLog = {
     handleSession : function( bouncer, session ) {
         session.on( 'privmsg', (function(message) {
             this.putLog(
-                '<' + bouncer.nick + '> ' + message.params[1],
+                '<' + session.nick + '> ' + message.params[1],
                 bouncer.name,
                 message.params[0]
             );
         }).bind(this) );
         session.on( 'notice', (function(message) {
             this.putLog(
-                '-' + bouncer.nick + '- ' + message.params[1],
+                '-' + session.nick + '- ' + message.params[1],
                 bouncer.name,
                 message.params[0]
             );
