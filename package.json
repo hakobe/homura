@@ -2,7 +2,7 @@
     "name" : "homura",
     "main" : "lib/homura",
     "bin" : "bin/homura",
-    "version" : "0.0.1-3-beta",
+    "version" : "0.0.1-4-beta",
     "description": "a IRC bouncer written in JavaScript for Node.js.",
     "keywords" : [ "irc "],
     "license" : "MIT",
