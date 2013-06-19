@@ -105,6 +105,13 @@ $ homura --config /path/to/your_config.json
             "dir"  : "/path/to/logs"
         },
         {
+            "name" : "auto-join",
+            "channels" : {
+                "freenode" : [ "#autojoinchan1", "#autojoinchan2" ],
+                "ircnet"   : [ "#autojoinchan3" ]
+            }
+        },
+        {
             "name" : "auto-reply"
         }
     ]
@@ -138,11 +145,17 @@ $ homura --debug
 Plugins are placed under `plugins` directory. You can enable plugins and can pass options to plugins in `config.json`. Please see Configuration section.
 
 ### file-log 
-Write log to files.
+Writes logs to files.
 
 #### Options
 - dir : Directory to save logfiles in
 - format : Format of the log filename (e.g. `{network}-{channel}-{year}{month}{date}.log` )
+
+### auto-join
+Joins to channels specified when homura has connected to network.
+
+#### Options
+- channels : Object that each network-name-key has Array of channel name to join automatically.
 
 ### auto-reply
 Replies a message automatically while you are not connected to homur.

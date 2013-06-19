@@ -35,6 +35,13 @@
             "dir"  : "/path/to/logs"
         },
         {
+            "name" : "auto-join",
+            "channels" : {
+                "freenode" : [ "#autojoinchan1", "#autojoinchan2" ],
+                "ircnet"   : [ "#autojoinchan3" ]
+            }
+        },
+        {
             "name" : "auto-reply"
         }
     ]
