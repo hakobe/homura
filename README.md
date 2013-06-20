@@ -101,7 +101,7 @@ $ homura --config /path/to/your_config.json
     ],
     "plugins" : [
         {
-            "name" : "file-log",
+            "name" : "log",
             "dir"  : "/path/to/logs"
         },
         {
@@ -148,7 +148,7 @@ $ homura --debug
 
 Plugins are placed under `plugins` directory. You can enable plugins and can pass options to plugins in `config.json`. Please see Configuration section.
 
-### file-log 
+### log 
 Writes logs to files.
 
 #### Options

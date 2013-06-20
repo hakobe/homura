@@ -31,7 +31,7 @@
     ],
     "plugins" : [
         {
-            "name" : "file-log",
+            "name" : "log",
             "dir"  : "/path/to/logs"
         },
         {
