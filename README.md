@@ -113,6 +113,10 @@ $ homura --config /path/to/your_config.json
         },
         {
             "name" : "auto-reply"
+        },
+        {
+            "name" : "log-buffer",
+            "size" : 100
         }
     ]
 }
@@ -158,10 +162,16 @@ Joins to channels specified when homura has connected to network.
 - channels : Object that each network-name-key has Array of channel name to join automatically.
 
 ### auto-reply
-Replies a message automatically while you are not connected to homur.
+Replies a message automatically while you are not connected to homura.
 
 #### Options
 - message : Message to use for reply
+
+### log-buffer
+Buffres conversation logs for each target (channerl or user), and sends them as notice of the server when you connect to homura.
+
+#### Options
+- size : Buffer size of logs
 
 ## Todos
 - Tests :-(

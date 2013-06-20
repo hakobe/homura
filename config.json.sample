@@ -43,6 +43,10 @@
         },
         {
             "name" : "auto-reply"
+        },
+        {
+            "name" : "log-buffer",
+            "size" : 100
         }
     ]
 }
