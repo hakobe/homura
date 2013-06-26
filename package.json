@@ -17,7 +17,7 @@
     "bin" : "bin/homura",
     "scripts" : {
         "start" : "bin/homura",
-        "test"  : "node_modules/.bin/mocha"
+        "test"  : "mocha"
     },
     "dependencies" : {
         "iconv" : "~2.0.6",
