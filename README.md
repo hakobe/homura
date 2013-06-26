@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/hakobe/homura.png?branch=master)](https://travis-ci.org/hakobe/homura)
+
 # homura
 
 This is a IRC bouncer written in JavaScript for Node.js. The name "homura" is from [madoka](http://www.madoka.org/) which is the IRC bouncer I used first ;)
