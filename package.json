@@ -1,7 +1,6 @@
 {
     "name" : "homura",
     "main" : "lib/homura",
-    "bin" : "bin/homura",
     "version" : "0.0.1-7-beta",
     "description": "IRC bouncer written in JavaScript for Node.js.",
     "keywords" : [ "irc "],
@@ -14,6 +13,11 @@
     "repository" : {
         "type" : "git",
         "url" : "http://github.com/hakobe/homura.git"
+    },
+    "bin" : "bin/homura",
+    "scripts" : {
+        "start" : "bin/homura",
+        "test"  : "node_modules/.bin/mocha"
     },
     "dependencies" : {
         "iconv" : "~2.0.6",
