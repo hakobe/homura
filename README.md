@@ -176,11 +176,8 @@ Buffres conversation logs for each target (channerl or user), and sends them as 
 - size : Buffer size of logs
 
 ## Todos
-- Tests :-(
-- CTCP messages handling
-- AWAY messages handling
-- NickServe Support
-- More plugins and plugin hacking documents
+- More tests
+- More documents for hacking
 
 ## Author
 - @hakobe
