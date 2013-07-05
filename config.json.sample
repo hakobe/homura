@@ -29,7 +29,7 @@
             "real"     : "YOURNAME"
         }
     ],
-    "plugins" : [
+    "modules" : [
         {
             "name" : "log",
             "dir"  : "/path/to/logs"
