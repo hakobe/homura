@@ -1,7 +1,8 @@
 'use strict';
 
-var irc = require('../lib/irc');
 var expect = require('chai').expect;
+
+var irc = require('../lib/irc');
 
 describe('irc.Message', function() {
     describe('.constructor()', function() {
