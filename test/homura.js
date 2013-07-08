@@ -13,7 +13,7 @@ describe('homura', function() {
                 var hom = new homura.Homura({
                     host : 'localhost',
                     port : 16668,
-                    networks : [{
+                    servers : [{
                         name : 'testnetwork',
                         encoding : 'UTF-8',
                         host     : 'localhost',

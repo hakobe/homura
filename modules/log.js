@@ -13,23 +13,23 @@ function Log(options) {
     this.format  = options.format || '{network}-{channel}-{year}{month}{date}.log';
 }
 
-Log.prototype.handleNetwork = function( network, bouncer ) {
-    network.on( 'connect', (function() {
+Log.prototype.handleIrcClient = function( ircClient, bouncer ) {
+    ircClient.on( 'connect', (function() {
         this.putLog(
             'Connected to IRC (' + bouncer.name + ')',
             bouncer.name
         );
     }).bind(this) );
 
-    network.on( 'close', (function() {
+    ircClient.on( 'close', (function() {
         this.putLog(
             'Closed connection to IRC (' + bouncer.name + ')',
             bouncer.name
         );
     }).bind(this) );
 
-    network.on( 'mode', (function(message) {
-        if (message.params[0].match( '[' + network.isupport.config.CHANTYPES + ']' )) { // only channel
+    ircClient.on( 'mode', (function(message) {
+        if (message.params[0].match( '[' + ircClient.isupport.config.CHANTYPES + ']' )) { // only channel
             this.putLog(
                 '*** ' + message.nick + ' sets modes: ' + message.params.slice(1).join(' '),
                 bouncer.name,
@@ -38,7 +38,7 @@ Log.prototype.handleNetwork = function( network, bouncer ) {
         }
     }).bind(this) );
 
-    network.on( 'kick', (function(message) {
+    ircClient.on( 'kick', (function(message) {
         this.putLog(
             '*** ' + message.nick + ' kiecked ' + message.params[1] + ' : ' + message.params[2],
             bouncer.name,
@@ -46,8 +46,8 @@ Log.prototype.handleNetwork = function( network, bouncer ) {
         );
     }).bind(this) );
 
-    network.on( 'quit', (function(message) {
-        Object.keys(network.channels).forEach( (function(channelName) {
+    ircClient.on( 'quit', (function(message) {
+        Object.keys(ircClient.channels).forEach( (function(channelName) {
             this.putLog(
                 '*** ' + message.nick + '(' + message.prefix + ')' + ' quit from IRC : ' + ( message.params[1] || '' ),
                 bouncer.name,
@@ -56,7 +56,7 @@ Log.prototype.handleNetwork = function( network, bouncer ) {
         }).bind(this) );
     }).bind(this) );
 
-    network.on( 'join', (function(message) {
+    ircClient.on( 'join', (function(message) {
         this.putLog(
             '*** ' + message.nick + '(' + message.prefix + ')' + ' joins',
             bouncer.name,
@@ -64,7 +64,7 @@ Log.prototype.handleNetwork = function( network, bouncer ) {
         );
     }).bind(this) );
 
-    network.on( 'part', (function(message) {
+    ircClient.on( 'part', (function(message) {
         this.putLog(
             '*** ' + message.nick + '(' + message.prefix + ')' + ' parts',
             bouncer.name,
@@ -72,8 +72,8 @@ Log.prototype.handleNetwork = function( network, bouncer ) {
         );
     }).bind(this) );
 
-    network.on( 'nick', (function(message) {
-        Object.keys(network.channels).forEach( (function(channelName) {
+    ircClient.on( 'nick', (function(message) {
+        Object.keys(ircClient.channels).forEach( (function(channelName) {
             this.putLog(
                 '*** ' + message.nick + ' is now known as ' + message.params[0],
                 bouncer.name,
@@ -82,7 +82,7 @@ Log.prototype.handleNetwork = function( network, bouncer ) {
         }).bind(this) );
     }).bind(this) );
 
-    network.on( 'topic', (function(message) {
+    ircClient.on( 'topic', (function(message) {
         this.putLog(
             '*** ' + message.nick + ' is changed topic to ' + message.params[1],
             bouncer.name,
@@ -90,7 +90,7 @@ Log.prototype.handleNetwork = function( network, bouncer ) {
         );
     }).bind(this) );
 
-    network.on( 'privmsg', (function(message) {
+    ircClient.on( 'privmsg', (function(message) {
         this.putLog(
             '<' + message.nick + '> ' + message.params[1],
             bouncer.name,
@@ -98,7 +98,7 @@ Log.prototype.handleNetwork = function( network, bouncer ) {
         );
     }).bind(this) );
 
-    network.on( 'notice', (function(message) {
+    ircClient.on( 'notice', (function(message) {
         this.putLog(
             '-' + message.nick + '- ' + message.params[1],
             bouncer.name,
@@ -107,17 +107,17 @@ Log.prototype.handleNetwork = function( network, bouncer ) {
     }).bind(this) );
 };
 
-Log.prototype.handleSession = function( session, bouncer ) {
-    session.on( 'privmsg', (function(message) {
+Log.prototype.handleUserSession = function( userSession, bouncer ) {
+    userSession.on( 'privmsg', (function(message) {
         this.putLog(
-            '<' + session.nick + '> ' + message.params[1],
+            '<' + userSession.nick + '> ' + message.params[1],
             bouncer.name,
             message.params[0]
         );
     }).bind(this) );
-    session.on( 'notice', (function(message) {
+    userSession.on( 'notice', (function(message) {
         this.putLog(
-            '-' + session.nick + '- ' + message.params[1],
+            '-' + userSession.nick + '- ' + message.params[1],
             bouncer.name,
             message.params[0]
         );

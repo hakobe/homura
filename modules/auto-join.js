@@ -5,12 +5,12 @@ function AutoJoin(options) {
     this.channels = options.channels || {};
 }
 
-AutoJoin.prototype.handleNetwork = function( network, bouncer ) {
+AutoJoin.prototype.handleIrcClient = function( ircClient, bouncer ) {
     var channels = this.channels[ bouncer.name ];
     if (channels) {
         channels.forEach( function(channel) {
-            network.on( 'register', (function() {
-                network.send('JOIN', [ channel ]);
+            ircClient.on( 'register', (function() {
+                ircClient.send('JOIN', [ channel ]);
             }) );
         } );
     }

@@ -5,16 +5,16 @@ function AutoReply(options) {
     this.message = options.message;
 }
 
-AutoReply.prototype.handleNetwork = function( network, bouncer ) {
-    network.on('privmsg', (function( message ) {
-        if (message.params[0] != network.nick) {
+AutoReply.prototype.handleIrcClient = function( ircClient, bouncer ) {
+    ircClient.on('privmsg', (function( message ) {
+        if (message.params[0] != ircClient.nick) {
             return;
         }
         if (bouncer.isAttached()) {
             return;
         }
 
-        network.send(
+        ircClient.send(
             'NOTICE',
             [ message.nick, ( this.message || "Sorry, I am away from IRC.") ]
         );

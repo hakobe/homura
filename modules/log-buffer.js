@@ -11,7 +11,6 @@ LogBuffer.prototype.handleBouncer = function( bouncer ) {
     this.buffers[ bouncer.name ] = {};
 
     bouncer.on( 'sync', (function(session) {
-        console.dir( bouncer.network.channels );
         Object.keys( this.buffers[ bouncer.name ] ).forEach( (function( target ) {
             if ( this.buffers[ bouncer.name ][ target ] ) {
                 this.buffers[ bouncer.name ][ target ].forEach( (function( text ) {
@@ -22,21 +21,21 @@ LogBuffer.prototype.handleBouncer = function( bouncer ) {
     }).bind(this) );
 };
 
-LogBuffer.prototype.handleNetwork = function( network, bouncer ) {
-    network.on( 'privmsg', (function(message) {
+LogBuffer.prototype.handleIrcClient = function( ircClient, bouncer ) {
+    ircClient.on( 'privmsg', (function(message) {
         this.bufferLog(bouncer.name, '<' + message.nick + '> ' + message.params[1], message.params[0]);
     }).bind(this) );
-    network.on( 'notice', (function(message) {
+    ircClient.on( 'notice', (function(message) {
         this.bufferLog(bouncer.name, '-' + message.nick + '- ' + message.params[1], message.params[0]);
     }).bind(this) );
 };
 
-LogBuffer.prototype.handleSession = function( session, bouncer ) {
-    session.on( 'privmsg', (function(message) {
-        this.bufferLog(bouncer.name, '<' + session.nick + '> ' + message.params[1], message.params[0]);
+LogBuffer.prototype.handleUserSession = function( userSession, bouncer ) {
+    userSession.on( 'privmsg', (function(message) {
+        this.bufferLog(bouncer.name, '<' + userSession.nick + '> ' + message.params[1], message.params[0]);
     }).bind(this) );
-    session.on( 'notice', (function(message) {
-        this.bufferLog(bouncer.name, '-' + session.nick + '- ' + message.params[1], message.params[0]);
+    userSession.on( 'notice', (function(message) {
+        this.bufferLog(bouncer.name, '-' + userSession.nick + '- ' + message.params[1], message.params[0]);
     }).bind(this) );
 };
 
