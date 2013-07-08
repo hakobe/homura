@@ -7,13 +7,13 @@ var homura = require('../lib/homura');
 
 describe('homura', function() {
     describe('end to end messaging', function() {
-        it('should proxy IRC message between 1 client and 1 network', function(done) {
-            var network = new irc.Server({ host : 'localhost', port : 16667 });
-            network.on('listening', function() {
+        it('should proxy IRC message between 1 client and 1 IRC server', function(done) {
+            var ircServer = new irc.Server({ host : 'localhost', port : 16667 });
+            ircServer.on('listening', function() {
                 var hom = new homura.Homura({
                     host : 'localhost',
                     port : 16668,
-                    servers : [{
+                    bouncers : [{
                         name : 'testnetwork',
                         encoding : 'UTF-8',
                         host     : 'localhost',
@@ -25,7 +25,7 @@ describe('homura', function() {
                 });
                 hom.start();
                 hom.server.on('listening', function() {
-                    var client = new irc.Client({ 
+                    var homClient = new irc.Client({ 
                         encoding : 'UTF-8',
                         host     : 'localhost',
                         port     : 16668,
@@ -33,19 +33,19 @@ describe('homura', function() {
                         user     : 'testuser@testnetwork',
                         real     : 'testreal',
                     });
-                    client.on('register', function() {
-                        client.send('PRIVMSG',  ['#test', 'hello. I am a client.']);
-                        client.on('privmsg', function(message) {
+                    homClient.on('register', function() {
+                        homClient.send('PRIVMSG',  ['#test', 'hello. I am a client.']);
+                        homClient.on('privmsg', function(message) {
                             expect(message).to.have.property('prefix', 'server');
                             expect(message).to.have.property('command', 'PRIVMSG');
                             expect(message).to.have.property('params').that.eql([ '#test', 'hello. I am a server.' ]);
                             done();
                         });
                     });
-                    client.connect();
+                    homClient.connect();
                 });
             });
-            network.on('connect', function(session) {
+            ircServer.on('connect', function(session) {
                 session.on('privmsg', function(message) {
                     expect(message).to.have.property('prefix').that.to.be.null;
                     expect(message).to.have.property('command', 'PRIVMSG');
@@ -53,7 +53,7 @@ describe('homura', function() {
                     session.send('server', 'PRIVMSG',  ['#test', 'hello. I am a server.']);
                 });
             });
-            network.start();
+            ircServer.start();
         });
     });
 });

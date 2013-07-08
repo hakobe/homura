@@ -10,7 +10,7 @@ function Log(options) {
     if (this.dir[0] !== '/') {
         this.dir = path.resolve( process.cwd(), this.dir );
     }
-    this.format  = options.format || '{network}-{channel}-{year}{month}{date}.log';
+    this.format  = options.format || '{bouncer}-{channel}-{year}{month}{date}.log';
 }
 
 Log.prototype.handleIrcClient = function( ircClient, bouncer ) {
@@ -124,11 +124,11 @@ Log.prototype.handleUserSession = function( userSession, bouncer ) {
     }).bind(this) );
 };
 
-Log.prototype.putLog = function( line, networkName, target ) {
+Log.prototype.putLog = function( line, bouncerName, target ) {
     var date = new Date();
 
     fs.appendFile(
-        this.pathFor(this.format, date, networkName, target),
+        this.pathFor(this.format, date, bouncerName, target),
         this.formatedTimeFor(date) + ' ' + line + "\n",
         function (err) {
             if (err) { 
@@ -138,7 +138,7 @@ Log.prototype.putLog = function( line, networkName, target ) {
     );
 };
 
-Log.prototype.pathFor = function( format, date, networkName, target ) {
+Log.prototype.pathFor = function( format, date, bouncerName, target ) {
     if (!target) {
         target = 'status';
     }
@@ -148,7 +148,7 @@ Log.prototype.pathFor = function( format, date, networkName, target ) {
     var date  = date.getDate();
 
     var fileName = format.
-        replace(/{network}/g, networkName.replace('/', '-')).
+        replace(/{bouncer}/g, bouncerName.replace('/', '-')).
         replace(/{channel}/g, target.replace('/', '-')).
         replace(/{year}/g,  year  < 10 ? '0' + year  : year  ).
         replace(/{month}/g, month < 10 ? '0' + month : month ).

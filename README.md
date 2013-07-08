@@ -15,10 +15,10 @@ $ homura -v
 ```
 
 To connect to homura with your IRC client, use the host and the port configured in `config.json`.
-You should set the IRC user name like `USERNAME@NETWORKNAME`. (e.g. `akemi@freenode` or `akemi@ircnet` )
+You should set the IRC user name like `USERNAME@BOUNCERNAME`. (e.g. `akemi@freenode` or `akemi@ircnet` )
 
 `USERNAME` is an actual user name for IRC networks, 
-and `NETWORKNAME` is a name that homura uses to decide which IRC network connect to.
+and `BOUNCERNAME` is a name that homura uses to decide which IRC network connect to.
 
 
 ## Install
@@ -48,7 +48,7 @@ $ homura --config /path/to/your_config.json
                      should be used for `tls.createServer` options directry.
                      For `key`, `cert`, `ca` and `pfx` options, you can pass the file path by appending
                     `_file` to the option name like `key_path`.
-- `networks` (required) : An Array of IRC network settings you connect to.
+- `bouncers` (required) : An Array of IRC bouncer settings.
     - `name` (required) : name to identify network. You can connect this network with `USERNAME@{name}`
     - `host` (required) : IRC server host
     - `port` (required) : IRC server port
@@ -74,7 +74,7 @@ $ homura --config /path/to/your_config.json
         "cert_file" : "/absolute/path/to/your/cetificate.pem",
         // and you can put tls.createServer options here.
     },
-    "networks" : [ // IRC network settings you want to connect to.
+    "bouncers" : [
         {
             "name"     : "freenode",
             "host"     : "hubbard.freenode.net",
@@ -155,7 +155,7 @@ Writes logs to files.
 
 #### Options
 - dir : Directory to save logfiles in
-- format : Format of the log filename (e.g. `{network}-{channel}-{year}{month}{date}.log` )
+- format : Format of the log filename (e.g. `{bouncer}-{channel}-{year}{month}{date}.log` )
 
 ### auto-join
 Joins to channels specified when homura has connected to network.

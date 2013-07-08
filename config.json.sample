@@ -6,7 +6,7 @@
         "key_file"  : "/absolute/path/to/your/privatekey.pem",
         "cert_file" : "/absolute/path/to/your/cetificate.pem"
     },
-    "networks" : [
+    "bouncers" : [
         {
             "name"     : "freenode",
             "encoding" : "UTF-8",
