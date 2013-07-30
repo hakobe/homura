@@ -49,7 +49,7 @@ Log.prototype.handleIrcClient = function( ircClient, bouncer ) {
     ircClient.on( 'quit', (function(message) {
         Object.keys(ircClient.channels).forEach( (function(channelName) {
             this.putLog(
-                '*** ' + message.nick + '(' + message.prefix + ')' + ' quit from IRC : ' + ( message.params[1] || '' ),
+                '*** ' + message.nick + '(' + message.prefix + ')' + ' quit from IRC : ' + ( message.params[0] || '' ),
                 bouncer.name,
                 channelName
             );
