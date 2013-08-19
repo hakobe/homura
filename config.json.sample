@@ -45,6 +45,10 @@
             "name" : "auto-reply"
         },
         {
+            "name"    : "auto-away",
+            "message" : "inaiyo-"
+        },
+        {
             "name" : "log-buffer",
             "size" : 100
         }
