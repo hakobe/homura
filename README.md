@@ -4,7 +4,7 @@
 
 This is a IRC bouncer written in JavaScript for Node.js. The name "homura" is from [madoka](http://www.madoka.org/) which is the IRC bouncer I used first ;)
 
-This project is under *DEVELOPMENT*. APIs are unstable and some important features have not been implemented yet.
+This project is under *DEVELOPMENT*. APIs are unstable and features are not implemented yet.
 
 ## Synopsis
 
@@ -15,7 +15,7 @@ $ homura -v
 ```
 
 To connect to homura with your IRC client, use the host and the port configured in `config.json`.
-You should set the IRC user name like `USERNAME@BOUNCERNAME`. (e.g. `akemi@freenode` or `akemi@ircnet` )
+You have to set the IRC user name like `USERNAME@BOUNCERNAME`. (e.g. `akemi@freenode` or `akemi@ircnet` )
 
 `USERNAME` is an actual user name for IRC networks, 
 and `BOUNCERNAME` is a name that homura uses to decide which IRC network connect to.
@@ -44,7 +44,7 @@ $ homura --config /path/to/your_config.json
 - `host` (required) : Host the client should connect to homura
 - `port` (required) : Port the client should connect to homura
 - `password` (optional) : Password that is required to connect to homura
-- `tls` (optional) : With this option, the client has to connect to homura using TLS. The passed Object 
+- `tls` (optional) : With this option, the client should connect to homura using TLS. The passed Object 
                      should be used for `tls.createServer` options directry.
                      For `key`, `cert`, `ca` and `pfx` options, you can pass the file path by appending
                     `_file` to the option name like `key_path`.
@@ -86,9 +86,6 @@ $ homura --config /path/to/your_config.json
             "tls"      : {
               "ca_file"  : "/absolute/path/to/your/ca.pem",
               // and you can put tls.connect options here.
-              //
-              // You have to set empty Object here now
-              // even if you would not have to pass any options to tls.connect.
             }
         },
         {
@@ -107,6 +104,10 @@ $ homura --config /path/to/your_config.json
             "dir"  : "/path/to/logs"
         },
         {
+            "name" : "log-buffer",
+            "size" : 100
+        },
+        {
             "name" : "auto-join",
             "channels" : {
                 "freenode" : [ "#autojoinchan1", "#autojoinchan2" ],
@@ -117,8 +118,12 @@ $ homura --config /path/to/your_config.json
             "name" : "auto-reply"
         },
         {
-            "name" : "log-buffer",
-            "size" : 100
+            "name" : "auto-away",
+            "message" : "oh I'm away from a keyborad"
+        },
+        {
+            "name" : "away-nick",
+            "awayNick" : "YOURNICK_AWAY"
         }
     ]
 }
@@ -151,29 +156,41 @@ $ homura --debug
 Modules are placed under `modules` directory. You can enable modules and can pass options to modules in `config.json`. Please see Configuration section.
 
 ### log 
-Writes logs to files.
+Writes out logs to files.
 
 #### Options
-- dir : Directory to save logfiles in
+- dir : Directory to save log files in
 - format : Format of the log filename (e.g. `{bouncer}-{channel}-{year}{month}{date}.log` )
 
-### auto-join
-Joins to channels specified when homura has connected to network.
+### log-buffer
+Buffres conversation logs for each target (channel or user), and sends logs as notice when you connect to homura.
 
 #### Options
-- channels : Object that each network-name-key has Array of channel name to join automatically.
+- size : Buffer size of logs
+
+### auto-join
+Joins to specified channels when homura has connected to network.
+
+#### Options
+- channels : Object that maps network-name-key to Array of channel name to join.
 
 ### auto-reply
 Replies a message automatically while you are not connected to homura.
 
 #### Options
-- message : Message to use for reply
+- message : Message to reply
 
-### log-buffer
-Buffres conversation logs for each target (channerl or user), and sends them as notice of the server when you connect to homura.
+### auto-away
+Sends AWAY message automatically when all clients disconnected.
 
 #### Options
-- size : Buffer size of logs
+- message : AWAY message
+
+### away-nick
+Changes nick automatically when you AWAY
+
+#### Options
+- awayNick : Nick name when you are AWAY
 
 ## Todos
 - More tests
