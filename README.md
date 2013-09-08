@@ -9,9 +9,10 @@ This project is under *DEVELOPMENT*. APIs are unstable and features are not impl
 ## Synopsis
 
 ```
-$ npm install -g homura
+$ cd homura_workingdir
+$ npm install homura
 $ vim config.json // see Configuration section
-$ homura -v
+$ ./node_modules/.bin/homura -v
 ```
 
 To connect to homura with your IRC client, use the host and the port configured in `config.json`.
