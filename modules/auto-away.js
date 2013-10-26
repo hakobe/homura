@@ -6,10 +6,12 @@ function AutoAway(options) {
 
 AutoAway.prototype.handleUserSession = function( userSession, bouncer ) {
     userSession.on('attach', function() {
-        bouncer.ircClient.send( 'AWAY' ); // unaway
+        if (bouncer.ircClient) {
+            bouncer.ircClient.send( 'AWAY' ); // unaway
+        }
     });
     userSession.on('close', (function() {
-        if (!bouncer.isAttached()) {
+        if (!bouncer.isAttached() && bouncer.ircClient ) {
             bouncer.ircClient.send( 'AWAY', [this.message] ); // away
         }
     }).bind(this));
