@@ -51,6 +51,12 @@
         {
             "name" : "log-buffer",
             "size" : 100
+        },
+        {
+            "name"     : "auto-nickserve-identify",
+            "passwords" : {
+                "freenode" : "PASSWORD"
+            }
         }
     ]
 }

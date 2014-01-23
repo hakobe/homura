@@ -193,9 +193,11 @@ Changes nick automatically when you AWAY
 #### Options
 - awayNick : Nick name when you are AWAY
 
-## Todos
-- More tests
-- More documents for hacking
+### auto-nickserve-identify
+Send NickServe Identify command automatically at start of connection
+
+#### Options
+- passwords : Object that contains bouncer name and password pairs.
 
 ## Author
 - @hakobe
