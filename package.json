@@ -1,7 +1,7 @@
 {
     "name" : "homura",
     "main" : "lib/homura",
-    "version" : "0.0.3-2-beta",
+    "version" : "0.0.4",
     "description": "IRC bouncer written in JavaScript for Node.js.",
     "keywords" : [ "irc" ],
     "license" : "MIT",
