@@ -125,6 +125,12 @@ $ homura --config /path/to/your_config.json
         {
             "name" : "away-nick",
             "awayNick" : "YOURNICK_AWAY"
+        },
+        {
+            "name"     : "auto-nickserve-identify",
+            "passwords" : {
+                "freenode" : "PASSWORD"
+            }
         }
     ]
 }
