@@ -92,7 +92,7 @@ $ homura --config /path/to/your_config.json
         {
             "name"     : "ircnet",
             "encoding" : "ISO-2022-JP",
-            "server"   : "irc.media.kyoto-u.ac.jp",
+            "host"     : "irc.media.kyoto-u.ac.jp",
             "port"     : 6667,
             "nick"     : "YOURNICK",
             "user"     : "YOURUSER",
