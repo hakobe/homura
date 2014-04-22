@@ -10,7 +10,7 @@
         {
             "name"     : "freenode",
             "encoding" : "UTF-8",
-            "server"   : "hubbard.freenode.net",
+            "host"     : "hubbard.freenode.net",
             "port"     : 7000,
             "nick"     : "YOURNICK",
             "user"     : "YOURUSER",
@@ -22,7 +22,7 @@
         {
             "name"     : "ircnet",
             "encoding" : "ISO-2022-JP",
-            "server"   : "irc.media.kyoto-u.ac.jp",
+            "host"     : "irc.media.kyoto-u.ac.jp",
             "port"     : 6667,
             "nick"     : "YOURNICK",
             "user"     : "YOURUSER",
