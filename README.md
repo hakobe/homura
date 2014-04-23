@@ -8,10 +8,10 @@ This project is under *DEVELOPMENT*. APIs are unstable and some features have no
 
 ## Synopsis
 
-```
+```sh
 $ cd homura_workingdir
 $ npm install homura
-$ vim config.json // see Configuration section
+$ vim config.json # see Configuration section
 $ ./node_modules/.bin/homura -v
 ```
 
@@ -24,7 +24,7 @@ and `BOUNCERNAME` is a name that homura uses to decide which IRC network connect
 
 ## Install
 
-```
+```sh
 $ npm install -g homura
 ```
 
@@ -36,7 +36,7 @@ The default path of the configuration file is `config.json` of current directry
 that homur is running on, and you can also specify `config.json` by using 
 `--config` option.
 
-```
+```sh
 $ homura --config /path/to/your_config.json
 ```
 
@@ -140,20 +140,20 @@ $ homura --config /path/to/your_config.json
 
 Start the homura with `config.json` in current directory.
 
-```
+```sh
 $ homura
 ```
 
 or specify `config.json` by `--config` option.
 
-```
+```sh
 $ homura --config /path/to/your_config.json
 ```
 
 Please specify `-v` or `--verbose` options to see what the homura is doing.
 `--debug` may be too noisy (prints the same IRC messages 4 times...) .
 
-```
+```sh
 $ homura -v
 $ homura --debug
 ```
