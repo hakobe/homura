@@ -10,7 +10,7 @@ AutoJoin.prototype.handleIrcClient = function( ircClient, bouncer ) {
     if (channels) {
         channels.forEach( function(channel) {
             ircClient.on( 'register', (function() {
-                ircClient.send('JOIN', [ channel ]);
+                ircClient.send('JOIN', channel.split(' '));
             }) );
         } );
     }
