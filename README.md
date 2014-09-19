@@ -111,7 +111,7 @@ $ homura --config /path/to/your_config.json
         {
             "name" : "auto-join",
             "channels" : {
-                "freenode" : [ "#autojoinchan1", "#autojoinchan2" ],
+                "freenode" : [ "#autojoinchan1 passwordchan1", "#autojoinchan2" ],
                 "ircnet"   : [ "#autojoinchan3" ]
             }
         },
